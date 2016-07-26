@@ -1,0 +1,26 @@
+//
+//  PrefixHeader.pch
+//  WXMovie
+//
+//  Created by mac2 on 16/7/18.
+//  Copyright © 2016年 mac2. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef DEBUG // 处于开发阶段
+#define WXLog(...) NSLog(__VA_ARGS__)
+#else // 处于发布阶段
+#define WXLog(...) 
+#endif
+
+#import "UIView+MTExtension.h"
+
+#define WScreen [UIScreen mainScreen].bounds.size.width
+#define HScreen [UIScreen mainScreen].bounds.size.height
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
