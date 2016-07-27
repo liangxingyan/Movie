@@ -10,6 +10,7 @@
 #import "WXPosterCell.h"
 #import "WXPosterDetail.h"
 #import "WXSmallView.h"
+#import "WXMovie.h"
 
 
 @interface WXPosterView () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -32,6 +33,9 @@
 /** 按钮 */
 @property (nonatomic, weak) UIButton *btn;
 
+/** title */
+@property (nonatomic, weak) UILabel *titleLabel;
+
 @end
 
 @implementation WXPosterView
@@ -41,11 +45,15 @@
     self = [super initWithFrame:frame];
     
     if (self) {
+        
         // 创建海报
         [self createPosterView];
         
+        
         // 创建头部视图
         [self setUpHeadView];
+        
+        
         
         // 添加观察者
         [self.smallView addObserver:self
@@ -151,6 +159,10 @@
 - (void)setMovies:(NSArray *)movies {
     _movies = movies;
     self.smallView.movies = movies;
+    
+    WXMovie *movie = [self.movies firstObject];
+    self.titleLabel.text = movie.title;
+    
 }
 
 #pragma mark - 海报视图
@@ -177,6 +189,29 @@
     // 注册
     [posterView registerClass:[WXPosterCell class] forCellWithReuseIdentifier:@"cell"];
     
+    
+    // 添加手势
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+    swipe.direction = UISwipeGestureRecognizerDirectionDown;
+ 
+    [self addGestureRecognizer:swipe];
+    
+    // 添加titleLabel
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, HScreen-30-64, WScreen, 40)];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.font = [UIFont systemFontOfSize:24];
+    titleLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"poster_title_home"]];
+    self.titleLabel = titleLabel;
+    [self addSubview:titleLabel];
+    
+}
+
+#pragma mark - 轻扫手势
+- (void)swipe:(UISwipeGestureRecognizer *)swipe {
+    
+    [self shouHead];
+    self.btn.selected = YES;
     
 }
 
@@ -233,6 +268,10 @@
     targetContentOffset->x = pageWith * pageNum;
     
     self.smallView.posterIndex = pageNum;
+    
+    WXMovie *movie = self.movies[pageNum];
+    self.titleLabel.text = movie.title;
+    
 }
 
 #pragma mark - 观察者
@@ -247,6 +286,9 @@
         
         [self.posterView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }];
+    
+    WXMovie *movie = self.movies[index];
+    self.titleLabel.text = movie.title;
     
 }
 

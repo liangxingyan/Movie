@@ -13,7 +13,4 @@
 /** 模型数组 */
 @property (nonatomic, strong) NSArray *movies;
 
-/** 下标 */
-//@property (nonatomic, assign) NSInteger indexNum;
-
 @end
