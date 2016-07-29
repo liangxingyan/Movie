@@ -10,6 +10,7 @@
 #import "WXCinemaCell.h"
 #import "WXDistrict.h"
 #import "WXCinema.h"
+#import "WXButton.h"
 
 #define NULL_TO_NIL(obj) ({ __typeof__ (obj) __obj = (obj); __obj == [NSNull null] ? nil : obj; })
 
@@ -44,6 +45,12 @@
     
     // 创建表视图
     [self setupTableView];
+    
+    // 初始化isOpen，yes是关闭，no是展开
+    for (int i = 0; i < 20; i++) {
+        isOpen[i] = YES;
+    }
+    
 }
 
 #pragma mark - 加载数据
@@ -142,12 +149,12 @@
 
     
     
-    UIButton *button = [[UIButton alloc] init];
-    button.frame = CGRectMake(0, 0, WScreen, 50);
-    [button setBackgroundImage:[UIImage imageNamed:@"hotMovieBottomImage"] forState:UIControlStateNormal];
+    WXButton *button = [[WXButton alloc] init];
+    button.frame = CGRectMake(0, 0, WScreen, 0);
+    button.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"hotMovieBottomImage"]];
     [button addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
+    button.titleLabel.font = [UIFont systemFontOfSize:14];
     button.tag = 1000 + section;
-    
     WXDistrict *district = self.districts[section];
     [button setTitle:district.name forState:UIControlStateNormal];
     
@@ -162,17 +169,18 @@
     //b) 修改分组的状态位
     isOpen[section] = !isOpen[section];
     
+    
+    // 作用是刷新指定的单元格，提高效率
     //c) 定义一个IndexSet集合，作用：将section转换为set类型
     NSIndexSet *set = [NSIndexSet indexSetWithIndex:section];
 
-    //d) 重新加载section
+    //d) 重新加载section, 动画效果
     [self.tableView reloadSections:set
                   withRowAnimation:UITableViewRowAnimationNone];
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44;
+    return 30;
 }
 
 @end

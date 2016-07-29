@@ -21,6 +21,7 @@
 		0A7665491D45B5BE000A24E7 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7665421D45B5BE000A24E7 /* SVRadialGradientLayer.m */; };
 		0A7722C31D3CB729009626E1 /* WXTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7722C21D3CB729009626E1 /* WXTabBarButton.m */; };
 		0A7722C71D3CC26B009626E1 /* UIView+MTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7722C61D3CC26B009626E1 /* UIView+MTExtension.m */; };
+		0A7970AF1D489C89006B6CA5 /* WXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7970AE1D489C89006B6CA5 /* WXButton.m */; };
 		0A7E77FF1D4308C9004C10DD /* WXTopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7E77FE1D4308C9004C10DD /* WXTopDetailViewController.m */; };
 		0A7E78031D430A31004C10DD /* WXDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7E78011D430A31004C10DD /* WXDetailCell.m */; };
 		0A7E78041D430A31004C10DD /* WXDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7E78021D430A31004C10DD /* WXDetailCell.xib */; };
@@ -160,6 +161,8 @@
 		0A7722C21D3CB729009626E1 /* WXTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTabBarButton.m; sourceTree = "<group>"; };
 		0A7722C51D3CC26B009626E1 /* UIView+MTExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MTExtension.h"; sourceTree = "<group>"; };
 		0A7722C61D3CC26B009626E1 /* UIView+MTExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MTExtension.m"; sourceTree = "<group>"; };
+		0A7970AD1D489C89006B6CA5 /* WXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXButton.h; sourceTree = "<group>"; };
+		0A7970AE1D489C89006B6CA5 /* WXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXButton.m; sourceTree = "<group>"; };
 		0A7E77FD1D4308C9004C10DD /* WXTopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTopDetailViewController.h; sourceTree = "<group>"; };
 		0A7E77FE1D4308C9004C10DD /* WXTopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTopDetailViewController.m; sourceTree = "<group>"; };
 		0A7E78001D430A31004C10DD /* WXDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXDetailCell.h; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 				0ABDB8361D4097EA008D1D60 /* WXCinemaCell.h */,
 				0ABDB8371D4097EA008D1D60 /* WXCinemaCell.m */,
 				0ABDB8381D4097EA008D1D60 /* WXCinemaCell.xib */,
+				0A7970AD1D489C89006B6CA5 /* WXButton.h */,
+				0A7970AE1D489C89006B6CA5 /* WXButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1099,6 +1104,7 @@
 				0ABA0B671D3DFEEA0042E8E8 /* UIProgressView+AFNetworking.m in Sources */,
 				0A7E781F1D439A72004C10DD /* WXImagecCell.m in Sources */,
 				0A8B724E1D3DE6D600B2C0CA /* UIImage+GIF.m in Sources */,
+				0A7970AF1D489C89006B6CA5 /* WXButton.m in Sources */,
 				0AD436D11D3F66D000E8F21B /* WXPosterView.m in Sources */,
 				0ABDB8391D4097EA008D1D60 /* WXCinemaCell.m in Sources */,
 				0A8B724F1D3DE6D600B2C0CA /* UIImage+MultiFormat.m in Sources */,
