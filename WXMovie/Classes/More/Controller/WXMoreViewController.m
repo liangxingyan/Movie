@@ -7,6 +7,7 @@
 //
 
 #import "WXMoreViewController.h"
+#import "SDImageCache.h"
 
 @interface WXMoreViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,6 +19,9 @@
 
 /** 缓存 */
 @property (nonatomic, weak) UILabel *label;
+
+/** 表视图 */
+@property (nonatomic, weak) UITableView *tableView;
 
 @end
 
@@ -39,7 +43,16 @@
     tableView.rowHeight = 50;
     tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tableView];
+    self.tableView = tableView;
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    // 获取缓存
+    NSUInteger size = [[SDImageCache sharedImageCache] getSize];
+    // 默认是b，显示的是MB
+    self.label.text = [NSString stringWithFormat:@"%.2fMB", size/1024.0/1024.0];
+
 }
 
 #pragma mark - UITableViewDataSource
@@ -60,10 +73,14 @@
     }
     if (indexPath.row == 0) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(WScreen - 100, 0, 100, 30)];
-        label.text = @"34.00M";
         label.centerY = tableView.rowHeight*0.5;
         label.textColor = [UIColor whiteColor];
         [cell.contentView addSubview:label];
+        // 获取缓存
+        NSUInteger size = [[SDImageCache sharedImageCache] getSize];
+        // 默认是b，显示的是MB
+        label.text = [NSString stringWithFormat:@"%.2fMB", size/1024.0/1024.0];
+
         self.label = label;
     }
     cell.imageView.image = [UIImage imageNamed:self.imageArray[indexPath.row]];
@@ -83,7 +100,14 @@
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定清除所有缓存" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            self.label.text = @"520K";
+
+            // 获取缓存
+            [[SDImageCache sharedImageCache] clearDisk];
+            
+            // 获取缓存
+            NSUInteger size = [[SDImageCache sharedImageCache] getSize];
+            // 默认是b，显示的是MB
+            self.label.text = [NSString stringWithFormat:@"%.2fMB", size/1024.0/1024.0];
         }];
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

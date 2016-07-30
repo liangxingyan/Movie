@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "WXLaunchViewController.h"
+#import "WXPushGuideViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,41 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+   
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    [self.window makeKeyAndVisible];
+    
+    // 之前已经登陆过
+    NSString *key = @"CFBundleVersion";
+    
+    // 上一次版本
+    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    
+    // 当前版本
+    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
+    
+    if ( [currentVersion isEqualToString:lastVersion] ) {
+        // 版本相同
+        
+        WXLaunchViewController *launchVc = [[WXLaunchViewController alloc] init];
+        
+        self.window.rootViewController = launchVc;
+        
+    } else {
+        
+        // 版本不同
+        WXPushGuideViewController *pushGuide = [[WXPushGuideViewController alloc] init];
+        
+        self.window.rootViewController = pushGuide;
+        
+        // 将当前版本存进沙盒
+        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
+        
+        // 马上同步到沙盒
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     return YES;
 }
 

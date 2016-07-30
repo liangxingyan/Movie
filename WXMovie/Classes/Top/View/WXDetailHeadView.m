@@ -10,6 +10,7 @@
 #import "WXDetailHead.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface WXDetailHeadView ()
 
@@ -50,6 +51,7 @@
     self.district.text = head.Toprelease[@"location"];
     self.timeLabel.text = head.Toprelease[@"date"];
     [self.video1 sd_setBackgroundImageWithURL:[NSURL URLWithString:head.videos[0][@"image"]] forState:UIControlStateNormal];
+    [self.video1 addTarget:self action:@selector(video1Action) forControlEvents:UIControlEventTouchUpInside];
   
     [self.video2 sd_setBackgroundImageWithURL:[NSURL URLWithString:head.videos[1][@"image"]] forState:UIControlStateNormal];
     
@@ -58,6 +60,13 @@
     [self.video4 sd_setBackgroundImageWithURL:[NSURL URLWithString:head.videos[3][@"image"]] forState:UIControlStateNormal];
     
     
+}
+
+- (void)video1Action {
+    
+    MPMoviePlayerViewController *mp =[[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:self.head.videos[0][@"url"]]];
+    
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:mp animated:YES completion:nil];
 }
 
 

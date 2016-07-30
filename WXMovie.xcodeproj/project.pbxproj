@@ -86,6 +86,8 @@
 		0A8B72511D3DE6D600B2C0CA /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B723F1D3DE6D600B2C0CA /* UIImageView+HighlightedWebCache.m */; };
 		0A8B72521D3DE6D600B2C0CA /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B72411D3DE6D600B2C0CA /* UIImageView+WebCache.m */; };
 		0A8B72531D3DE6D600B2C0CA /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B72431D3DE6D600B2C0CA /* UIView+WebCacheOperation.m */; };
+		0A9BFB131D4B4713007593CA /* WXLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BFB121D4B4713007593CA /* WXLaunchViewController.m */; };
+		0A9BFB161D4B6418007593CA /* WXPushGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BFB151D4B6418007593CA /* WXPushGuideViewController.m */; };
 		0AACB6071D463B6D009483C5 /* WXPosterDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AACB6061D463B6D009483C5 /* WXPosterDetail.m */; };
 		0AACB6091D463BBF009483C5 /* WXPosterDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AACB6081D463BBF009483C5 /* WXPosterDetail.xib */; };
 		0ABA0B591D3DFEEA0042E8E8 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA0B361D3DFEEA0042E8E8 /* AFHTTPSessionManager.m */; };
@@ -270,6 +272,10 @@
 		0A8B72411D3DE6D600B2C0CA /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		0A8B72421D3DE6D600B2C0CA /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		0A8B72431D3DE6D600B2C0CA /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		0A9BFB111D4B4713007593CA /* WXLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXLaunchViewController.h; sourceTree = "<group>"; };
+		0A9BFB121D4B4713007593CA /* WXLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXLaunchViewController.m; sourceTree = "<group>"; };
+		0A9BFB141D4B6418007593CA /* WXPushGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXPushGuideViewController.h; sourceTree = "<group>"; };
+		0A9BFB151D4B6418007593CA /* WXPushGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXPushGuideViewController.m; sourceTree = "<group>"; };
 		0AACB6051D463B6D009483C5 /* WXPosterDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXPosterDetail.h; path = ../WXPosterDetail.h; sourceTree = "<group>"; };
 		0AACB6061D463B6D009483C5 /* WXPosterDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXPosterDetail.m; path = ../WXPosterDetail.m; sourceTree = "<group>"; };
 		0AACB6081D463BBF009483C5 /* WXPosterDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WXPosterDetail.xib; path = ../WXPosterDetail.xib; sourceTree = "<group>"; };
@@ -490,6 +496,10 @@
 				0A8324811D3C885500C76739 /* WXNavigationController.m */,
 				0A8B71FB1D3DE07300B2C0CA /* WXBaseViewController.h */,
 				0A8B71FC1D3DE07300B2C0CA /* WXBaseViewController.m */,
+				0A9BFB111D4B4713007593CA /* WXLaunchViewController.h */,
+				0A9BFB121D4B4713007593CA /* WXLaunchViewController.m */,
+				0A9BFB141D4B6418007593CA /* WXPushGuideViewController.h */,
+				0A9BFB151D4B6418007593CA /* WXPushGuideViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1091,12 +1101,14 @@
 				0A8B72511D3DE6D600B2C0CA /* UIImageView+HighlightedWebCache.m in Sources */,
 				0A83246D1D3C87A300C76739 /* AppDelegate.m in Sources */,
 				0ABA0B601D3DFEEA0042E8E8 /* README.md in Sources */,
+				0A9BFB161D4B6418007593CA /* WXPushGuideViewController.m in Sources */,
 				0ABA0B5E1D3DFEEA0042E8E8 /* AFURLSessionManager.m in Sources */,
 				0ABA0B621D3DFEEA0042E8E8 /* AFImageDownloader.m in Sources */,
 				0A7E78031D430A31004C10DD /* WXDetailCell.m in Sources */,
 				0A8B72491D3DE6D600B2C0CA /* SDWebImageDownloader.m in Sources */,
 				0A7E780F1D433CB9004C10DD /* WXDetailHead.m in Sources */,
 				0AD436D41D3F686600E8F21B /* WXPosterCell.m in Sources */,
+				0A9BFB131D4B4713007593CA /* WXLaunchViewController.m in Sources */,
 				0A8B72471D3DE6D600B2C0CA /* SDWebImageCompat.m in Sources */,
 				0A71C9351D404E69003CEFEF /* WXTopCell.m in Sources */,
 				0ABA0B661D3DFEEA0042E8E8 /* UIImageView+AFNetworking.m in Sources */,

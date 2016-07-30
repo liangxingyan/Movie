@@ -35,11 +35,6 @@
     // 加载头部视图
     [self setupHeadView];
     
-    // cell 的高度设置 ,这个自动计算是iOS8之后才有的
-    self.tableView.estimatedRowHeight = 44;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
-    self.tableView.rowHeight = 100;
     self.tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([WXDetailCell class]) bundle:nil] forCellReuseIdentifier:@"cell"];
     
@@ -118,6 +113,18 @@
     cell.details = self.details[indexPath.row];
     
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    WXDetail *detail = self.details[indexPath.row];
+    
+    CGSize maxSize = CGSizeMake(WScreen - 110, MAXFLOAT);
+    
+    CGFloat textH = [detail.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:17]} context:nil].size.height;
+    
+    return textH + 81;
 }
 
 @end
