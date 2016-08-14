@@ -133,7 +133,7 @@
 
 - (void)longPress:(UILongPressGestureRecognizer *)longPress {
     
-    if (longPress.state == UIGestureRecognizerStateEnded) {
+    if (longPress.state == UIGestureRecognizerStateBegan) {
         
         // 弹出alert ，保存到手机
         UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"保存图片"
@@ -215,9 +215,9 @@
 }
 
 #pragma mark - UIGestureRecognizerDelegate代理
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
-}
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    return YES;
+//}
 
 
 @end

@@ -19,6 +19,11 @@
 
 @implementation WXTopViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[WXSkinTool skinToolWithImageName:@"bg"]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -94,7 +99,7 @@
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(10+64, 10, 10+49, 10);
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 #pragma mark - UICollectionViewDelegate

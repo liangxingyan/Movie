@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "WXBaseViewController.h"
 
-@interface WXHomeViewController : WXBaseViewController
+@interface WXHomeViewController : UIViewController
 
 @end

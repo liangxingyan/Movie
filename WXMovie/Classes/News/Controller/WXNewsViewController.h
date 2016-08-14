@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "WXBaseViewController.h"
 
-@interface WXNewsViewController : WXBaseViewController
+@interface WXNewsViewController : UIViewController
 
 @end

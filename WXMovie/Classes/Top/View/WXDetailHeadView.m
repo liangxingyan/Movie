@@ -42,7 +42,6 @@
 
 - (void)setHead:(WXDetailHead *)head {
     _head = head;
-    
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:head.image]];
     self.nameLabel.text = head.titleCn;
     self.directorLabel.text = [head.directors firstObject];
@@ -58,8 +57,6 @@
     [self.video3 sd_setBackgroundImageWithURL:[NSURL URLWithString:head.videos[2][@"image"]] forState:UIControlStateNormal];
     
     [self.video4 sd_setBackgroundImageWithURL:[NSURL URLWithString:head.videos[3][@"image"]] forState:UIControlStateNormal];
-    
-    
 }
 
 - (void)video1Action {

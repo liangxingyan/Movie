@@ -42,6 +42,11 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[WXSkinTool skinToolWithImageName:@"bg"]];
+}
+
 #pragma mark - 数据解析
 - (void)loadData {
     
@@ -73,7 +78,6 @@
     tableView.delegate = self;
     [self.view addSubview:tableView];
     tableView.rowHeight = 100;
-    tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     self.tableView = tableView;
     
     self.tableView.backgroundColor = [UIColor clearColor];

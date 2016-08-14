@@ -16,6 +16,7 @@
 #endif
 
 #import "UIView+MTExtension.h"
+#import "WXSkinTool.h"
 
 #define WScreen [UIScreen mainScreen].bounds.size.width
 #define HScreen [UIScreen mainScreen].bounds.size.height

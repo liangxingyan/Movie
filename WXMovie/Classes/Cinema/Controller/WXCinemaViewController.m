@@ -37,6 +37,11 @@
 
 @implementation WXCinemaViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[WXSkinTool skinToolWithImageName:@"bg"]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -108,7 +113,6 @@
     tablView.dataSource = self;
     tablView.delegate = self;
     tablView.rowHeight = 100;
-    tablView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     tablView.backgroundColor = [UIColor clearColor];
     self.tableView = tablView;
     [self.view addSubview:tablView];

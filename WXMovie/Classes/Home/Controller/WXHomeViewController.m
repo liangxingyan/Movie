@@ -11,6 +11,8 @@
 #import "WXMovieCell.h"
 #import "UIImageView+WebCache.h"
 #import "WXPosterView.h"
+#import <AFNetworking.h>
+#import <MJExtension.h>
 
 @interface WXHomeViewController () <UITableViewDataSource>
 
@@ -24,7 +26,7 @@
 @property (nonatomic, weak) UIView *exchangeView;
 
 /** 列表视图 */
-@property (nonatomic, weak) UIView *listView;
+@property (nonatomic, weak) UITableView *listView;
 
 /** 海报视图 */
 @property (nonatomic, weak) WXPosterView *posterView;
@@ -36,6 +38,11 @@
 
 @implementation WXHomeViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[WXSkinTool skinToolWithImageName:@"bg"]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,46 +51,41 @@
     
     // 获取json数据
     [self getJsonData];
-    
-    // 创建海报视图
-    [self createPosterView];
+ 
     
     // 创建列表视图
     [self createListView];
-    
-    
     
 }
 
 #pragma mark - 获取json数据
 - (void)getJsonData {
     
-    // 1.路径
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"us_box" ofType:@"json"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    // 2.解析json
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    
-    // 3.创建模型数组
-    self.movies = [[NSMutableArray alloc] init];
-    
-    NSArray *subjects = [dict objectForKey:@"subjects"];
-    
-    // 4.遍历数组
-    for (NSDictionary *dict in subjects) {
+    [manager GET:@"https://api.douban.com/v2/movie/us_box" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSDictionary *data = [dict objectForKey:@"subject"];
-        WXMovie *movie = [[WXMovie alloc] init];
-        movie.rating = data[@"rating"];
-        movie.title = data[@"title"];
-        movie.collect_count = [data[@"collect_count"] integerValue];
-        movie.images = data[@"images"];
-        movie.year = [data[@"year"] integerValue];
-        movie.original_title = data[@"original_title"];
-        [self.movies addObject:movie];
+        NSMutableArray *dicArray = [NSMutableArray array];
         
-    }
+        NSArray *dataArray = responseObject[@"subjects"];
+        
+        for (int i = 0; i<dataArray.count; i++) {
+            
+            NSDictionary *dic = [dataArray[i] objectForKey:@"subject"];
+            
+            [dicArray addObject:dic];
+        }
+        
+        self.movies = [WXMovie mj_objectArrayWithKeyValuesArray:dicArray];
+        
+        [self.listView reloadData];
+
+        // 创建海报视图
+        [self createPosterView];
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];    
 }
 
 #pragma mark - 创建导航栏右边按钮
@@ -93,10 +95,8 @@
     UIView *exchangeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 49, 25)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:exchangeView];
-    
-    
+
     // 2.创建两个子按钮
-    
     // 列表按钮
     UIButton *listBtn = [[UIButton alloc] init];
     listBtn.frame = CGRectMake(0, 0, 49, 25);

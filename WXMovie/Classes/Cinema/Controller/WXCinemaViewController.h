@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "WXBaseViewController.h"
 
-@interface WXCinemaViewController : WXBaseViewController
+@interface WXCinemaViewController : UIViewController
 
 @end
